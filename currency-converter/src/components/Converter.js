@@ -78,13 +78,13 @@ export function ConverterBlock() {
             <select value={leftCurrency} onChange={handleLeftCurrencyChange}>
                 <option value="EUR">EUR</option>
                 <option value="USD">USD</option>
-                <option value="GBP">GBP</option>
+                <option value="UAH">UAH</option>
             </select>
             <input type="string" value={rightValue} onChange={handleRightValueChange} />
             <select value={rightCurrency} onChange={handleRightCurrencyChange}>
                 <option value="UAH">UAH</option>
-                <option value="RUB">RUB</option>
-                <option value="JPY">JPY</option>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
             </select>
             <button onClick={handleSaveToHistory}>Save to History</button>
             <div>
