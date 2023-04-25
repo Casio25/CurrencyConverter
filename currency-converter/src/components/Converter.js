@@ -1,12 +1,12 @@
-import { useState } from "react"
+import { useState } from "react";
+import HistoryStore from "./HistoryStore";
+import { observer } from "mobx-react-lite";
 
-export function ConverterBlock() {
-
+export const ConverterBlock = observer(() => {
     const [leftValue, setLeftValue] = useState(100);
     const [rightValue, setRightValue] = useState(100);
     const [leftCurrency, setLeftCurrency] = useState('EUR');
     const [rightCurrency, setRightCurrency] = useState('UAH');
-    const [historyArray, setHistoryArray] = useState([]);
 
     const handleLeftValueChange = async (e) => {
         const value = e.target.value;
@@ -58,11 +58,13 @@ export function ConverterBlock() {
             leftValue: leftValue,
             rightValue: rightValue,
             leftCurrency: leftCurrency,
-            rightCurrency: rightCurrency
+            rightCurrency: rightCurrency,
+            
         }
-        setHistoryArray([...historyArray, newItem]);
+        HistoryStore.addToHistoryArray(newItem);
     }
-/* Documentation code */
+
+    /* Documentation code */
     var myHeaders = new Headers();
     myHeaders.append("apikey", "JqhLq4ohxkJaCICuLhFCGkjycGnQMaWd");
 
@@ -71,7 +73,8 @@ export function ConverterBlock() {
         redirect: 'follow',
         headers: myHeaders
     };
-/*End of documentation code */
+    /* End of documentation code */
+
     return (
         <div className="ConvertBlock">
             <input type="string" value={leftValue} onChange={handleLeftValueChange} />
@@ -90,11 +93,11 @@ export function ConverterBlock() {
             <div>
                 <h2>History</h2>
                 <ul>
-                    {historyArray.map((item, index) => (
+                    {HistoryStore.historyArray.map((item, index) => (
                         <li key={index}>{item.leftValue} {item.leftCurrency} = {item.rightValue} {item.rightCurrency}</li>
                     ))}
                 </ul>
             </div>
         </div>
-    )
-}
+    );
+})
