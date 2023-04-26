@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import HistoryStore from "./HistoryStore";
 import { observer } from "mobx-react-lite";
 
@@ -8,6 +8,7 @@ export const ConverterBlock = observer(() => {
     const [leftCurrency, setLeftCurrency] = useState('EUR');
     const [rightCurrency, setRightCurrency] = useState('UAH');
     const [currencyDate, setCurrencyDate] = useState("");
+    const [isSaved, setIsSaved] = useState(false);
 
     const handleLeftValueChange = async (e) => {
         const value = e.target.value;
@@ -68,7 +69,14 @@ export const ConverterBlock = observer(() => {
             
         }
         HistoryStore.addToHistoryArray(newItem);
+        setIsSaved(true);
     }
+    useEffect(() => {
+        if (isSaved) {
+            localStorage.setItem('history', JSON.stringify(HistoryStore.historyArray));
+            setIsSaved(false);
+        }
+    }, [isSaved]);
 
     /* Documentation code */
     var myHeaders = new Headers();
