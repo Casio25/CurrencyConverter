@@ -7,6 +7,7 @@ export const ConverterBlock = observer(() => {
     const [rightValue, setRightValue] = useState(100);
     const [leftCurrency, setLeftCurrency] = useState('EUR');
     const [rightCurrency, setRightCurrency] = useState('UAH');
+    const [currencyDate, setCurrencyDate] = useState("");
 
     const handleLeftValueChange = async (e) => {
         const value = e.target.value;
@@ -19,6 +20,8 @@ export const ConverterBlock = observer(() => {
             }
 
             const data = await response.json();
+            const date = data.date
+            setCurrencyDate(date);
             console.log(data);
             setRightValue(data.result);
         } catch (error) {
@@ -36,6 +39,8 @@ export const ConverterBlock = observer(() => {
             }
 
             const data = await response.json();
+            const date = data.date;
+            setCurrencyDate(date);
             console.log(data);
             setLeftValue(data.result);
         } catch (error) {
@@ -59,6 +64,7 @@ export const ConverterBlock = observer(() => {
             rightValue: rightValue,
             leftCurrency: leftCurrency,
             rightCurrency: rightCurrency,
+            date: currencyDate
             
         }
         HistoryStore.addToHistoryArray(newItem);
@@ -94,7 +100,7 @@ export const ConverterBlock = observer(() => {
                 <h2>History</h2>
                 <ul>
                     {HistoryStore.historyArray.map((item, index) => (
-                        <li key={index}>{item.leftValue} {item.leftCurrency} = {item.rightValue} {item.rightCurrency}</li>
+                        <li key={index}> {item.date} | {item.leftValue} {item.leftCurrency} = {item.rightValue} {item.rightCurrency}</li>
                     ))}
                 </ul>
             </div>
