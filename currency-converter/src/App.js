@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './App.scss';
 import { Header } from './components/Header';
 import { MainBlock } from './components/MainBlock';
 import { ConverterBlock } from './components/Converter';

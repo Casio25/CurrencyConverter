@@ -9,6 +9,7 @@ export const ConverterBlock = observer(() => {
     const [rightCurrency, setRightCurrency] = useState('UAH');
     const [currencyDate, setCurrencyDate] = useState("");
     const [isSaved, setIsSaved] = useState(false);
+    const [rates, setRates] = useState([]);
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState(() => {
         const date = new Date();
@@ -32,6 +33,9 @@ export const ConverterBlock = observer(() => {
              }
 
              const data = await response.json();
+             const rates = data.rates;
+             console.log(rates);
+             setRates(Object.entries(rates));
             console.log(data);
          } catch (error) {
              console.log("Fetch error:", error);
@@ -136,6 +140,12 @@ export const ConverterBlock = observer(() => {
             <div>
                 <input type="date" value={endDate} onChange={searchHistory} />
             </div>
+            <h3>Calendar results</h3>
+            <ul>
+                {rates.map((rate, index) => (
+                    <li key={index}>{rate[0]}: {rate[1][rightCurrency]} {rightCurrency}</li>
+                ))}
+            </ul>
             <div>
                 <h2>History</h2>
                 <ul>
