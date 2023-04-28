@@ -9,6 +9,35 @@ export const ConverterBlock = observer(() => {
     const [rightCurrency, setRightCurrency] = useState('UAH');
     const [currencyDate, setCurrencyDate] = useState("");
     const [isSaved, setIsSaved] = useState(false);
+    const [startDate, setStartDate] = useState("");
+    const [endDate, setEndDate] = useState(() => {
+        const date = new Date();
+        const year = date.getFullYear().toString();
+        const month = (date.getMonth() + 1).toString().padStart(2, '0'); // add leading zero to month if necessary
+        const day = date.getDate().toString().padStart(2, '0'); // add leading zero to day if necessary
+        return `${year}-${month}-${day}`;
+    });
+    console.log(endDate);
+
+
+    const searchHistory = async (e) => {
+        const date = e.target.value;
+        setStartDate(date)
+        console.log(startDate)
+         try {
+             const response = await fetch(`https://api.apilayer.com/exchangerates_data/timeseries?start_date=${date}&end_date=${endDate}&base=${leftCurrency}&symbols=${rightCurrency}`, requestOptions);
+
+             if (!response.ok) {
+                 throw new Error("Network response was not ok");
+             }
+
+             const data = await response.json();
+            console.log(data);
+         } catch (error) {
+             console.log("Fetch error:", error);
+        }
+    }
+    console.log(startDate)
 
     const handleLeftValueChange = async (e) => {
         const value = e.target.value;
@@ -105,6 +134,9 @@ export const ConverterBlock = observer(() => {
             </select>
             <button onClick={handleSaveToHistory}>Save to History</button>
             <div>
+                <input type="date" value={endDate} onChange={searchHistory} />
+            </div>
+            <div>
                 <h2>History</h2>
                 <ul>
                     {HistoryStore.historyArray.map((item, index) => (
@@ -114,4 +146,5 @@ export const ConverterBlock = observer(() => {
             </div>
         </div>
     );
+
 })

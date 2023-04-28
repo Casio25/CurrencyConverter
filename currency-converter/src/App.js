@@ -13,10 +13,10 @@ function App() {
       <div className="App">
         <Header />
         <MainBlock />
-        <ConverterBlock />
         <Routes>
           <Route exact path="/home" element={<Home />} />
           <Route exact path="/empty" element={<Empty />} />
+          <Route exact path="/converter" element={<ConverterBlock />} />
         </Routes>
       </div>
     </BrowserRouter>

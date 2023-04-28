@@ -13,7 +13,10 @@ export function Header() {
                     <Link to="/home">Послуги</Link>
                 </div>
                 <div className="header-nav-item">
-                    <Link to="/empty">Розрахувати кредит</Link>
+                    <Link to="/converter">Конвертер валют</Link>
+                </div>
+                <div className="header-nav-item">
+                    <Link to="/empty">Контакти</Link>
                 </div>
             </div>
         </nav>
