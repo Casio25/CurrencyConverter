@@ -1,5 +1,5 @@
 .footer {
-    width: 1920px;
+    width: auto;
     height: 230px;
     background-color: #F6F7FF;
     padding-top: 50px;
@@ -83,8 +83,8 @@ li {
 
 
 .mobile {
-    margin-left: 700px;
-    margin-top: -50px;
+    margin-left: 720px;
+    margin-top: -100px;
     font-family: 'Roboto';
     font-style: normal;
 }

@@ -1,5 +1,5 @@
 .convertor_main {
-    width: 1920px;
+    width: auto;
     height: 550px;
     background-color: #F6F7FF;
     font-family: 'Roboto';
@@ -120,19 +120,26 @@
     line-height: 140%;
 }
 .convertor_story_container {
-    width: 1920px;
-    height: 550px;
-    background-color: #F6F7FF;
-    font-family: 'Roboto';
-    font-style: normal;
+font-style: normal;
+   font-family: 'Roboto';
+   background-color: #fff;
+   font-family: 'Roboto';
+   font-style: normal;
+   width: 390px;
+   height: 30px;
+   margin-left: 30px;
+   align-items: center;
+   justify-content: center;
+   margin-top: 25px;
+   background-color: #fff;
+   display: flex;
+
 }
 
-.convertor_story_operetion {
-    margin-left: 230px;
-    margin-top: 80px;
-    width: 970px;
-    height: 350px;
-    background-color: #F6F7FF;
+
+.convertor_content_elem{
+    display:inline-block;
+
 }
 .calendar {
     margin-top: 150px;
