@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import HistoryStore from "./HistoryStore";
 import { observer } from "mobx-react-lite";
+import  exchange  from "../images/icon-arrows.png";
+import arrow from "../images/Group 58.png"
+import "../styles/Converter.css"
 
 export const ConverterBlock = observer(() => {
     const [leftValue, setLeftValue] = useState(100);
@@ -124,37 +127,58 @@ export const ConverterBlock = observer(() => {
 
     return (
         <div className="ConvertBlock">
-            <input type="string" value={leftValue} onChange={handleLeftValueChange} />
-            <select value={leftCurrency} onChange={handleLeftCurrencyChange}>
-                <option value="EUR">EUR</option>
-                <option value="USD">USD</option>
-                <option value="UAH">UAH</option>
-            </select>
-            <input type="string" value={rightValue} onChange={handleRightValueChange} />
-            <select value={rightCurrency} onChange={handleRightCurrencyChange}>
-                <option value="UAH">UAH</option>
-                <option value="USD">USD</option>
-                <option value="EUR">EUR</option>
-            </select>
-            <button onClick={handleSaveToHistory}>Save to History</button>
-            <div>
-                <input type="date" value={endDate} onChange={searchHistory} />
+
+            <div className="convertor_main">
+                <div className="convertor_content">
+                    <h1 className="convertor_content_item">Конвертер валют</h1>
+                    <div className="i_have">
+                        <h5>В мене є:</h5>
+                        <input type="string" onChange={handleLeftValueChange} className="i_have_input" value={leftValue} placeholder="1000" />
+                        <select className="i_have_select" value={leftCurrency} onChange={handleLeftCurrencyChange}>
+                            <option value="UAH" selected>UAH</option>
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                        </select>
+                    </div>
+                    <img className="exchange_img" src={exchange} alt="exchange" />
+                    <div className="want_have">
+                        <h5>Хочу придбати:</h5>
+                        <input type="string" className="want_have_input" value={rightValue} onChange={handleRightValueChange} />
+                        <select className="want_have_select" value={rightCurrency} onChange={handleRightCurrencyChange}>
+                            <option value="UAH">UAH</option>
+                            <option value="USD" selected>USD</option>
+                            <option value="EUR">EUR</option>
+                        </select>
+                    </div>
+                    <div>
+                        <input type="date" value={endDate} onChange={searchHistory} />
+                        <button className="convertor_story_btn" onChange={handleSaveToHistory}>Зберегти історію</button>
+                    </div>
+                </div>
             </div>
-            <h3>Calendar results</h3>
-            <ul>
-                {rates.map((rate, index) => (
-                    <li key={index}>{rate[0]}: {rate[1][rightCurrency]} {rightCurrency}</li>
-                ))}
-            </ul>
-            <div>
-                <h2>History</h2>
-                <ul>
-                    {HistoryStore.historyArray.map((item, index) => (
-                        <li key={index}> {item.date} | {item.leftValue} {item.leftCurrency} = {item.rightValue} {item.rightCurrency}</li>
-                    ))}
-                </ul>
+            <div className="convertor_story_content">
+                <h3 className="convertor_story_item">Історія конвертації</h3>
+                <div>
+                    <button className="convertor_story_btn" >Очистити історію</button>
+                </div>
+                <div className="convertor_story_container">
+                    <div className="convertor_story_operetion">
+                        <ul>
+                            {HistoryStore.historyArray.map((item, index) => (
+                                <li key={index}>
+                                    <h5 className="convertor_operetion_date">{item.date}</h5>
+                                    <h5 className="convertor_operetion_sum">{item.leftValue} {item.leftCurrency}</h5>
+                                    <img className="arrow_img" src={arrow} alt="arrow" />
+                                    <h5 className="converted_operation_sum">{item.rightValue} {item.rightCurrency}</h5>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
             </div>
+
         </div>
     );
+
 
 })

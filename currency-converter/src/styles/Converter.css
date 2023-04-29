@@ -1,0 +1,106 @@
+.convertor_main {
+    width: 1440px;
+    height: 550px;
+    background-color: #F6F7FF;
+    font-family: 'Roboto';
+    font-style: normal;
+}
+
+.convertor_content {
+    margin: 80px 230px;
+    width: 950px;
+    height: 350px;
+    position: absolute;
+    background-color: #fff;
+}
+
+.convertor_content_item {
+    padding-top: 53px;
+    padding-left: 70px;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 140%;
+}
+
+.i_have,
+.want_have {
+    padding-left: 130px;
+    color: #707C87;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 140%;
+    padding-top: 30px;
+}
+
+
+.i_have_input,
+.want_have_input {
+    text-align: center;
+    width: 170px;
+    height: 35px;
+
+}
+
+
+.i_have_select,
+.want_have_select {
+    text-align: center;
+    margin-left: 10px;
+    width: 70px;
+    height: 38px;
+}
+
+
+.want_have {
+    margin-left: 430px;
+    margin-top: -100px;
+}
+
+
+.exchange_img {
+    position: absolute;
+    margin-left: 450px;
+    margin-top: -30px;
+}
+
+.save_results {
+    margin-left: 130px;
+    margin-top: 50px;
+}
+
+
+.save_button {
+    cursor: pointer;
+    background-color: blue;
+    width: 170px;
+    border: 1px solid;
+    margin-left: 345px;
+    height: 45px;
+    color: #fff;
+}
+
+.date_input {
+    padding-left: 15px;
+    width: 155px;
+    height: 38px;
+}
+
+.convertor_story_btn {
+    margin-left: 650px;
+    width: 190px;
+    height: 50px;
+    background-color: blue;
+    border: 1px solid;
+    color: #fff;
+    position: absolute;
+    margin-top: -37px;
+    cursor: pointer;
+}
+
+.convertor_story_item {
+    padding-top: 40px;
+    margin-left: 70px;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 140%;
+}
