@@ -2,7 +2,7 @@
     background-image: url('../images/background.png');
     padding-left: 250px;
     padding-top: 70px;
-    height: 250px;
+    height: 280px;
     color: #fff;
     font-family: 'Roboto', sans-serif;
 
@@ -34,6 +34,6 @@
 
 .card_img {
     position: absolute;
-    margin-top: -190px;
+    margin-top: -230px;
     margin-left: 590px;
 }

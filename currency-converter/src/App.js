@@ -5,6 +5,7 @@ import { MainBlock } from './components/MainBlock';
 import { ConverterBlock } from './components/Converter';
 import { Empty } from './pages/Empty';
 import { Home } from './pages/Home';
+import {FooterMain} from "./components/Footer"
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route exact path="/empty" element={<Empty />} />
           <Route exact path="/converter" element={<ConverterBlock />} />
         </Routes>
+        <FooterMain />
       </div>
     </BrowserRouter>
   );

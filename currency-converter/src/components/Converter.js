@@ -132,7 +132,6 @@ export const ConverterBlock = observer(() => {
 
     return (
         <div className="ConvertBlock">
-
             <div className="convertor_main">
                 <div className="convertor_content">
                     <h1 className="convertor_content_item">Конвертер валют</h1>
@@ -156,15 +155,26 @@ export const ConverterBlock = observer(() => {
                         </select>
                     </div>
                     <div>
-                        <input type="date" value={endDate} onChange={searchHistory} />
-                        <button className="convertor_story_btn" onClick={handleSaveToHistory}>Зберегти історію</button>
+                        <input className="calendar" type="date" value={endDate} onChange={searchHistory} />
+                        <button className="save_story_btn" onClick={handleSaveToHistory}>Зберегти історію</button>
                     </div>
+                    
                 </div>
+            </div>
+            <div className="rates-list-container">
+                <h3>Курс валют на выбранный период:</h3>
+                <ul className="rates-list">
+                    {rates.map(([date, rate]) => (
+                        <li key={date}>
+                            {date}: {rate[rightCurrency]}
+                        </li>
+                    ))}
+                </ul>
             </div>
             <div className="convertor_story_content">
                 <h3 className="convertor_story_item">Історія конвертації</h3>
                 <div>
-                    <button className="convertor_story_btn" onClick={clearHistory}>Очистити історію</button>
+                    <button className="clear_story_btn" onClick={clearHistory}>Очистити історію</button>
                 </div>
                 <div className="convertor_story_container">
                     <div className="convertor_story_operetion">
@@ -181,7 +191,6 @@ export const ConverterBlock = observer(() => {
                     </div>
                 </div>
             </div>
-
         </div>
     );
 
