@@ -17,8 +17,12 @@ class HistoryStore {
         this.historyArray.push(item);
         localStorage.setItem('history', JSON.stringify(this.historyArray));
     }
+
+    clearHistoryArray() {
+        this.historyArray.clear();
+        localStorage.removeItem('history');
+    }
 }
 
 const store = new HistoryStore();
 export default store;
-

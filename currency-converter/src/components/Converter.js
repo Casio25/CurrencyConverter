@@ -46,6 +46,11 @@ export const ConverterBlock = observer(() => {
     }
     console.log(startDate)
 
+    const clearHistory = () => {
+        HistoryStore.clearHistoryArray();
+        localStorage.removeItem('history');
+    }
+
     const handleLeftValueChange = async (e) => {
         const value = e.target.value;
         setLeftValue(value)
@@ -152,27 +157,27 @@ export const ConverterBlock = observer(() => {
                     </div>
                     <div>
                         <input type="date" value={endDate} onChange={searchHistory} />
-                        <button className="convertor_story_btn" onChange={handleSaveToHistory}>Зберегти історію</button>
+                        <button className="convertor_story_btn" onClick={handleSaveToHistory}>Зберегти історію</button>
                     </div>
                 </div>
             </div>
             <div className="convertor_story_content">
                 <h3 className="convertor_story_item">Історія конвертації</h3>
                 <div>
-                    <button className="convertor_story_btn" >Очистити історію</button>
+                    <button className="convertor_story_btn" onClick={clearHistory}>Очистити історію</button>
                 </div>
                 <div className="convertor_story_container">
                     <div className="convertor_story_operetion">
-                        <ul>
+                        <div className="convertor_story_item">
                             {HistoryStore.historyArray.map((item, index) => (
-                                <li key={index}>
+                                <div key={index} className="convertor_story_operetion">
                                     <h5 className="convertor_operetion_date">{item.date}</h5>
                                     <h5 className="convertor_operetion_sum">{item.leftValue} {item.leftCurrency}</h5>
                                     <img className="arrow_img" src={arrow} alt="arrow" />
                                     <h5 className="converted_operation_sum">{item.rightValue} {item.rightCurrency}</h5>
-                                </li>
+                                </div>
                             ))}
-                        </ul>
+                        </div>
                     </div>
                 </div>
             </div>
