@@ -1,0 +1,39 @@
+.main_content {
+    background-image: url('../images/background.png');
+    padding-left: 250px;
+    padding-top: 70px;
+    height: 280px;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+.bank_item {
+    font-weight: 700;
+    font-size: 54px;
+    line-height: 63px;
+}
+
+.bank_description {
+    margin-top: 25px;
+}
+
+.bank_button {
+    margin-top: 25px;
+    width: 234px;
+    height: 53px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+.bank_button:hover {
+    background-color: yellow;
+}
+
+.card_img {
+    position: absolute;
+    margin-top: -230px;
+    margin-left: 590px;
+}

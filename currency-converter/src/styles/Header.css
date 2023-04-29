@@ -1,0 +1,92 @@
+.top_menu_content {
+    margin-top: 30px;
+    display: flex;
+    padding-left: 10px;
+    text-align: center;
+    align-items: center;
+    margin-left: 130px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    cursor: pointer;
+}
+
+.logo {
+    width: 28px;
+    height: 25px;
+    padding-right: 10px;
+}
+
+.top_menu {
+    margin-top: 30px;
+    width: 1000px;
+    height: 51px;
+}
+
+
+.logo_content {
+    padding-left: 15px;
+}
+
+.menu_items {
+    display: flex;
+    margin-left: 170px;
+}
+
+
+
+li {
+    white-space: nowrap;
+    padding-left: 40px;
+    list-style-type: none;
+}
+
+.special_office {
+    padding-right: 10px;
+    margin-left: 250px;
+
+}
+
+.special_office_title {
+    white-space: nowrap;
+
+}
+
+
+#services_item:hover,
+#question_item:hover,
+#contacts_item:hover,
+#convertor_item:hover {
+    border: 1px solid yellow;
+    color: black;
+    background-color: yellow;
+    border-radius: 10px;
+    
+
+    background-color: rgb(240, 240, 23);
+    display: block;
+    width: 100%;
+}
+
+#convertor_item:hover {
+    text-align: center;
+    justify-content: center;
+    width: 150px;
+    height: 20px;
+}
+
+
+.regular-link {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+#convertor_item:hover {
+    background-color: rgb(240, 240, 23);
+}
+
+#convertor_item:hover a {
+    color: black;
+    text-decoration: none;
+}

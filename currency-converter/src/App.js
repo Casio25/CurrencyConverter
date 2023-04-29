@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Header } from './components/Header';
+import { MainBlock } from './components/MainBlock';
+import { ConverterBlock } from './components/Converter';
+import { Empty } from './pages/Empty';
+import { Home } from './pages/Home';
+import {FooterMain} from "./components/Footer"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Header />
+        <MainBlock />
+        <Routes>
+          <Route exact path="/home" element={<Home />} />
+          <Route exact path="/empty" element={<Empty />} />
+          <Route exact path="/converter" element={<ConverterBlock />} />
+        </Routes>
+        <FooterMain />
+      </div>
+    </BrowserRouter>
   );
 }
 
 export default App;
+
