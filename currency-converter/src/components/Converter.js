@@ -6,6 +6,7 @@ import arrow from "../images/Group 58.png"
 import "../styles/Converter.css"
 
 export const ConverterBlock = observer(() => {
+    const currencies = ['UAH', 'USD', 'EUR', 'JPY', 'GBP', 'AUD', 'CAD'];
     const [leftValue, setLeftValue] = useState(100);
     const [rightValue, setRightValue] = useState(100);
     const [leftCurrency, setLeftCurrency] = useState('EUR');
@@ -168,10 +169,10 @@ export const ConverterBlock = observer(() => {
                     <div className="i_have">
                         <h5>В мене є:</h5>
                         <input type="string" onChange={handleLeftValueChange} className="i_have_input" value={leftValue} placeholder="1000" />
-                        <select className="i_have_select" value={leftCurrency} onChange={handleLeftCurrencyChange}>
-                            <option value="UAH" selected>UAH</option>
-                            <option value="USD">USD</option>
-                            <option value="EUR">EUR</option>
+                        <select className="want_have_select" value={leftCurrency} onChange={handleLeftCurrencyChange}>
+                            {currencies.map((currency) => (
+                                <option key={currency} value={currency}>{currency}</option>
+                            ))}
                         </select>
                     </div>
                     <img className="exchange_img" src={exchange} alt="exchange" />
@@ -179,9 +180,9 @@ export const ConverterBlock = observer(() => {
                         <h5>Хочу придбати:</h5>
                         <input type="string" className="want_have_input" value={rightValue} onChange={handleRightValueChange} />
                         <select className="want_have_select" value={rightCurrency} onChange={handleRightCurrencyChange}>
-                            <option value="UAH">UAH</option>
-                            <option value="USD" selected>USD</option>
-                            <option value="EUR">EUR</option>
+                            {currencies.map((currency) => (
+                                <option key={currency} value={currency}>{currency}</option>
+                            ))}
                         </select>
                     </div>
                     <div>
@@ -194,14 +195,14 @@ export const ConverterBlock = observer(() => {
             <div className="rates-list-container">
                 <h3 className="rates-list-title">Курс валют на выбранный период:</h3>
                 <div className="rates-elem-container">
-                {rates.map(([date, rate]) => (
                 <ul className="rates-list">
+                        {rates.map(([date, rate]) => (
                         <li className="rates-elem" key={date}>
                             {date}: {rate[rightCurrency]}
                         </li>
-                    
+                        ))}
                 </ul>
-                ))}
+
                 </div>
             </div>
             <div className="convertor_story_content">

@@ -19,7 +19,7 @@ class HistoryStore {
     }
 
     clearHistoryArray() {
-        this.historyArray.clear();
+        this.historyArray = [];
         localStorage.removeItem('history');
     }
 }
