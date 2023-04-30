@@ -90,14 +90,44 @@ export const ConverterBlock = observer(() => {
         }
     }
 
-    const handleLeftCurrencyChange = (e) => {
-        const value = e.target.value;
-        setLeftCurrency(value)
+    const handleLeftCurrencyChange = async (e) => {
+        const leftCur = e.target.value;
+        setLeftCurrency(leftCur)
+        try {
+            const response = await fetch(`https://api.apilayer.com/exchangerates_data/convert?to=${rightCurrency}&from=${leftCur}&amount=${leftValue}`, requestOptions);
+
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+
+            const data = await response.json();
+            const date = data.date;
+            setCurrencyDate(date);
+            console.log(data);
+            setRightValue(data.result);
+        } catch (error) {
+            console.log("Fetch error:", error);
+        }
     }
 
-    const handleRightCurrencyChange = (e) => {
-        const value = e.target.value;
-        setRightCurrency(value)
+    const handleRightCurrencyChange = async (e) => {
+        const rightCur = e.target.value;
+        setRightCurrency(rightCur)
+        try {
+            const response = await fetch(`https://api.apilayer.com/exchangerates_data/convert?to=${rightCur}&from=${leftCurrency}&amount=${leftValue}`, requestOptions);
+
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+
+            const data = await response.json();
+            const date = data.date;
+            setCurrencyDate(date);
+            console.log(data);
+            setLeftValue(data.result);
+        } catch (error) {
+            console.log("Fetch error:", error);
+        }
     }
 
     const handleSaveToHistory = () => {
@@ -162,14 +192,17 @@ export const ConverterBlock = observer(() => {
                 </div>
             </div>
             <div className="rates-list-container">
-                <h3>Курс валют на выбранный период:</h3>
+                <h3 className="rates-list-title">Курс валют на выбранный период:</h3>
+                <div className="rates-elem-container">
+                {rates.map(([date, rate]) => (
                 <ul className="rates-list">
-                    {rates.map(([date, rate]) => (
-                        <li key={date}>
+                        <li className="rates-elem" key={date}>
                             {date}: {rate[rightCurrency]}
                         </li>
-                    ))}
+                    
                 </ul>
+                ))}
+                </div>
             </div>
             <div className="convertor_story_content">
                 <h3 className="convertor_story_item">Історія конвертації</h3>
@@ -179,10 +212,10 @@ export const ConverterBlock = observer(() => {
                 {HistoryStore.historyArray.map((item, index) => (
                 <div className="convertor_story_container">
                                 <div key={index} className="convertor_story_elem">
-                                    <h5 className="convertor_operetion_date">{item.date}</h5>
+                                    <h5 className="convertor_operetion_date">{item.date} </h5>
                                     <h5 className="convertor_operetion_sum">{item.leftValue} {item.leftCurrency}</h5>
                                     <img className="arrow_img" src={arrow} alt="arrow" />
-                                    <h5 className="converted_operation_sum">{item.rightValue} {item.rightCurrency}</h5>
+                                    <h5 className="converted_operetion_sum">{item.rightValue} {item.rightCurrency}</h5>
                                 </div>
                             </div>
                             ))}
